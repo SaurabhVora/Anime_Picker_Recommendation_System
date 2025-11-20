@@ -85,19 +85,32 @@ The AI understands **context, emotions, and themes** — not just keywords.
 
 ## 🎬 Demo
 
-### Search Interface
+### 🖼️ Search Interface
 
 <div align="center">
-<i>Beautiful, intuitive search with real-time results</i>
+
+![Search Interface](./screenshots/search-interface.png)
+
+_Beautiful, intuitive search with glassmorphism effects and real-time results_
+
 </div>
 
-### Results Grid
+### 🎨 Results Grid
 
 <div align="center">
-<i>Responsive card layout with match scores and hover effects</i>
+
+![Results Grid](./screenshots/results-grid.png)
+
+_Responsive card layout with match scores, hover effects, and anime details_
+
 </div>
 
-> **Note:** Add screenshots by running the app and capturing the UI!
+> **📸 To add your screenshots:**
+>
+> 1. Create a `screenshots` folder in the root directory
+> 2. Take screenshots of your running app
+> 3. Save them as `search-interface.png` and `results-grid.png`
+> 4. Commit and push to GitHub
 
 ---
 
