@@ -309,6 +309,10 @@ def search():
 # ============================================
 # APPLICATION STARTUP
 # ============================================
+# Load resources at module level (for gunicorn)
+logger.info("Initializing application for production...")
+load_resources()
+
 if __name__ == '__main__':
     # Load resources before starting server
     if not load_resources():
