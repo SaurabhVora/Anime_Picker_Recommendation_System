@@ -7,6 +7,9 @@ gunicorn==21.2.0
 pandas==2.3.3
 numpy==2.3.5
 
-# Machine Learning & NLP
+# Machine Learning & NLP - CPU ONLY (no CUDA)
+# Install PyTorch CPU version FIRST to avoid downloading 3GB CUDA libraries
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.5.1+cpu
 sentence-transformers==5.1.2
 scikit-learn==1.7.2
