@@ -19,7 +19,7 @@ class Config:
     # Server Settings
     PORT = int(os.getenv('PORT', 5000))
     DEBUG = os.getenv('DEBUG', 'True') == 'True'
-    HOST = os.getenv('HOST', '127.0.0.1')
+    HOST = os.getenv('HOST', '0.0.0.0')  # Changed for production deployment
     
     # Cache Settings
     ENABLE_QUERY_CACHE = True
