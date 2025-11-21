@@ -25,6 +25,7 @@ class Config:
     ENABLE_QUERY_CACHE = True
     MAX_CACHE_SIZE = 100
     
+    
     # Logging Settings
     LOG_FILE = 'anime_picker.log'
-    LOG_LEVEL = 'INFO'
+    LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')  # Default to INFO if not set
