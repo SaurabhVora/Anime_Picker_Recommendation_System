@@ -1,8 +1,8 @@
 # 📡 Anime Picker System - API Documentation
 
 **Version:** 1.0  
-**Base URL:** `http://127.0.0.1:5000` (Development)  
-**Production URL:** `https://your-domain.com/api` (To be configured)
+**Base URL:** `http://127.0.0.1:5000` (Local Development)  
+**Docker URL:** `http://localhost:5000` (When running with Docker Compose)
 
 ---
 
@@ -38,14 +38,7 @@ The Anime Picker API provides semantic search capabilities for anime recommendat
 
 ## Authentication
 
-**Current:** No authentication required (Development)  
-**Production:** Will require API key (To be implemented)
-
-For production deployment, you'll need to add:
-
-```http
-Authorization: Bearer YOUR_API_KEY
-```
+No authentication required for local development.
 
 ---
 
@@ -373,28 +366,16 @@ const searchAnime = async (query) => {
 
 ## Rate Limiting
 
-**Current:** No rate limiting (Development)  
-**Production:** To be implemented
-
-Recommended limits for production:
-
-- 100 requests per minute per IP
-- 1000 requests per hour per API key
+No rate limiting for local development.
 
 ---
 
 ## CORS Policy
 
-**Current:** CORS enabled for all origins (Development)
+CORS is enabled for all origins in local development:
 
 ```python
 CORS(app)  # Allows all origins
-```
-
-**Production:** Restrict to your frontend domain
-
-```python
-CORS(app, origins=["https://your-frontend-domain.com"])
 ```
 
 ---
@@ -774,29 +755,18 @@ curl "http://127.0.0.1:5000/search?q=adventure&exclude=naruto,one+piece"
 
 ---
 
-## Deployment Considerations
+## Docker Setup
 
-### Environment Variables
-
-Create `.env` file for production:
+To run the API with Docker Compose:
 
 ```bash
-PORT=5000
-HOST=0.0.0.0
-DEBUG=False
-CORS_ORIGINS=https://your-frontend-domain.com
+# From project root
+docker-compose up
 ```
 
-### Production Checklist
+The API will be available at `http://localhost:5000`
 
-- [ ] Set `DEBUG=False` in config
-- [ ] Configure CORS for specific origins
-- [ ] Add API authentication
-- [ ] Implement rate limiting
-- [ ] Set up HTTPS
-- [ ] Configure logging
-- [ ] Add monitoring
-- [ ] Set up error tracking (e.g., Sentry)
+See [DOCKER_README.md](../DOCKER_README.md) for complete Docker setup instructions.
 
 ---
 

@@ -16,9 +16,9 @@ export default function Home() {
     setLoading(true);
     setError(null);
     try {
+      // API URL for Docker Compose (backend service) or local development
       const API_URL =
-        process.env.NEXT_PUBLIC_API_URL ||
-        "https://anime-picker-backend.onrender.com";
+        process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
       const response = await fetch(
         `${API_URL}/search?q=${encodeURIComponent(searchQuery)}&limit=12`
       );

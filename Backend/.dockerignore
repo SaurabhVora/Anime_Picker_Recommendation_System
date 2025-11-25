@@ -1,0 +1,43 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Testing
+.pytest_cache/
+.coverage
+
+# Environment variables
+.env
+
+# Git
+.git/
+.gitignore
+
+# Documentation (keep in image but optional)
+# *.md
+
+# Scripts (not needed in container)
+*.bat
+*.ps1
+install_requirements.*
+run.*

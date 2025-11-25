@@ -278,36 +278,18 @@ border: 1px solid rgba(255, 255, 255, 0.1);
 
 ---
 
-## 🚀 Deployment
+## 🐳 Running with Docker
 
-### **Production Build**
+This frontend is part of the Docker Compose setup. See the main [DOCKER_README.md](../DOCKER_README.md) for complete instructions.
 
-```bash
-# Build the application
-npm run build
-
-# Start production server
-npm start
-```
-
-### **Deploy to Vercel (Recommended)**
+To run the entire application:
 
 ```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel
+# From project root
+docker-compose up
 ```
 
-**Environment Variables:**
-Set `NEXT_PUBLIC_API_URL` to your backend URL in production.
-
-### **Deploy to Netlify**
-
-1. Build command: `npm run build`
-2. Publish directory: `.next`
-3. Add environment variable: `NEXT_PUBLIC_API_URL`
+The frontend will be available at **http://localhost:3000**
 
 ---
 
@@ -315,15 +297,18 @@ Set `NEXT_PUBLIC_API_URL` to your backend URL in production.
 
 ### **Backend URL**
 
-To change the backend URL, update `page.js`:
+The frontend connects to the backend API. The default is configured for Docker Compose:
 
 ```javascript
-// Development
-const API_URL = "http://127.0.0.1:5000";
-
-// Production
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://your-api.com";
+// In page.js
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 ```
+
+**For different setups:**
+
+- **Docker Compose** (default): `http://localhost:5000`
+- **Local development** (both running locally): `http://127.0.0.1:5000`
+- **Custom setup**: Set `NEXT_PUBLIC_API_URL` environment variable
 
 ### **Results Limit**
 

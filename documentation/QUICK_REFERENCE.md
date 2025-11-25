@@ -6,7 +6,7 @@
 
 ## 🚀 Running the Application
 
-### Development
+### Local Development
 
 ```bash
 # Easy way
@@ -18,10 +18,11 @@
 ..\venv\Scripts\python.exe app.py
 ```
 
-### Production
+### Docker
 
 ```bash
-gunicorn app:app --workers 2 --bind 0.0.0.0:5000
+# From project root
+docker-compose up
 ```
 
 ---
@@ -30,8 +31,8 @@ gunicorn app:app --workers 2 --bind 0.0.0.0:5000
 
 ### Base URL
 
-- **Development**: `http://127.0.0.1:5000`
-- **Production**: `https://your-domain.com`
+- **Local**: `http://127.0.0.1:5000`
+- **Docker**: `http://localhost:5000`
 
 ### Endpoints
 
@@ -199,31 +200,23 @@ const searchAnime = async (query) => {
 
 ---
 
-## 🚀 Deployment Quick Commands
-
-### Heroku
+## 🐳 Docker Commands
 
 ```bash
-heroku create anime-picker-api
-git push heroku main
-heroku logs --tail
-```
+# Start application
+docker-compose up
 
-### Railway
+# Start in background
+docker-compose up -d
 
-```bash
-railway init
-railway up
-railway logs
-```
+# View logs
+docker-compose logs -f
 
-### AWS/DigitalOcean
+# Stop application
+docker-compose down
 
-```bash
-ssh -i key.pem ubuntu@ip
-cd anime-picker
-source venv/bin/activate
-gunicorn app:app
+# Rebuild after changes
+docker-compose up --build
 ```
 
 ---
@@ -237,26 +230,15 @@ gunicorn app:app
 
 ---
 
-## 🔐 Security Checklist
-
-- [ ] DEBUG=False in production
-- [ ] CORS restricted to frontend domain
-- [ ] HTTPS enabled
-- [ ] Environment variables secured
-- [ ] Input validation enabled
-- [ ] Firewall configured
-
----
-
 ## 📚 Documentation Files
 
-| File                         | Purpose                 |
-| ---------------------------- | ----------------------- |
-| `README.md`                  | General overview        |
-| `API_DOCUMENTATION.md`       | Complete API reference  |
-| `DEPLOYMENT_GUIDE.md`        | Deployment instructions |
-| `QUICK_START.md`             | Getting started guide   |
-| `MEDIUM_PRIORITY_SUMMARY.md` | Recent improvements     |
+| File                         | Purpose                |
+| ---------------------------- | ---------------------- |
+| `README.md`                  | General overview       |
+| `API_DOCUMENTATION.md`       | Complete API reference |
+| `DEPLOYMENT_GUIDE.md`        | Docker setup guide     |
+| `QUICK_START.md`             | Getting started guide  |
+| `MEDIUM_PRIORITY_SUMMARY.md` | Recent improvements    |
 
 ---
 
@@ -314,6 +296,7 @@ type anime_picker.log
 - [ ] Search endpoint working
 - [ ] Documentation complete
 - [ ] Deployment tested
+- [ ] Docker setup working
 
 ---
 

@@ -1,0 +1,33 @@
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+!DOCKER_README.md
+documentation/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python virtual environment
+venv/
+env/
+ENV/
+
+# Logs
+*.log
+
+# Screenshots
+screenshots/
+
+# License
+LICENSE

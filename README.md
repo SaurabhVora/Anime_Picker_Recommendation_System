@@ -116,13 +116,47 @@ _Responsive card layout with match scores, hover effects, and anime details_
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### 🐳 **Option 1: Docker Compose** (Recommended)
+
+The easiest way to run the entire application:
+
+#### Prerequisites
+
+- **Docker Desktop** ([Download here](https://www.docker.com/products/docker-desktop))
+- **4 GB RAM** minimum
+
+#### Steps
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/yourusername/anime-picker.git
+cd anime-picker
+
+# 2. Start everything with one command
+docker-compose up
+```
+
+**That's it!** 🎉
+
+- **Frontend:** http://localhost:3000
+- **Backend API:** http://localhost:5000
+
+> **First run takes 3-5 minutes** to build images and download AI model.  
+> **Subsequent runs take ~15 seconds**.
+
+See [DOCKER_README.md](DOCKER_README.md) for detailed Docker documentation.
+
+---
+
+### ⚙️ **Option 2: Manual Installation**
+
+If you prefer to run services locally without Docker:
+
+#### Prerequisites
 
 - **Python 3.13+** (Backend)
 - **Node.js 18+** (Frontend)
 - **4 GB RAM** minimum
-
-### 🔧 Installation
 
 #### 1️⃣ Clone the Repository
 
@@ -356,68 +390,48 @@ GET /health
 
 ---
 
-## 🚀 Deployment
+## 🐳 Docker Setup
 
-### Backend Deployment
+Run the entire application with a single command using Docker Compose:
 
-#### Option 1: GCP (Free Forever)
+### Prerequisites
+
+- **Docker Desktop** installed ([Download here](https://www.docker.com/products/docker-desktop))
+- **4 GB RAM** minimum
+
+### Quick Start with Docker
 
 ```bash
-# Deploy to Google Cloud Platform e2-micro instance
-# 1 GB RAM, perfect for our lightweight model
-# Cost: $0/month (free tier)
+# Clone the repository
+git clone https://github.com/yourusername/anime-picker.git
+cd anime-picker
+
+# Start both frontend and backend
+docker-compose up
+
+# Or run in detached mode
+docker-compose up -d
 ```
 
-#### Option 2: Railway
+**That's it!** The application will be available at:
+
+- **Frontend:** http://localhost:3000
+- **Backend API:** http://localhost:5000
+
+### Docker Commands
 
 ```bash
-railway init
-railway up
-# Auto-deploy from GitHub
-# Cost: $0-5/month
-```
+# Stop the application
+docker-compose down
 
-#### Option 3: Heroku
+# Rebuild after code changes
+docker-compose up --build
 
-```bash
-heroku create anime-picker-api
-git push heroku main
-# Cost: Free tier available
-```
+# View logs
+docker-compose logs -f
 
-### Frontend Deployment
-
-#### Vercel (Recommended)
-
-```bash
-npm i -g vercel
-vercel
-# One-click deploy
-# Cost: Free for personal projects
-```
-
-#### Netlify
-
-```bash
-# Build command: npm run build
-# Publish directory: .next
-# Cost: Free tier available
-```
-
-### Environment Variables
-
-**Backend (.env)**
-
-```bash
-PORT=5000
-DEBUG=False
-LOG_LEVEL=INFO
-```
-
-**Frontend (.env.local)**
-
-```bash
-NEXT_PUBLIC_API_URL=https://your-backend-api.com
+# Stop and remove volumes
+docker-compose down -v
 ```
 
 ---
@@ -559,7 +573,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - [Backend README](Backend/README.md)
 - [Frontend README](frontend/README.md)
 - [API Documentation](Backend/API_DOCUMENTATION.md)
-- [Deployment Guide](Backend/DEPLOYMENT_GUIDE.md)
+- [Docker Setup Guide](DOCKER_README.md)
 
 ### Contact
 
