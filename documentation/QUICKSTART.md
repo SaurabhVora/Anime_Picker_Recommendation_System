@@ -17,7 +17,7 @@ Get Anime Picker running in **under 5 minutes**!
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/anime-picker.git
+git clone https://github.com/Saurabhvora/Anime_Picker_Recommendation_System.git
 cd anime-picker
 ```
 
@@ -145,6 +145,6 @@ npm run lint              # Check code quality
 
 ---
 
-**Need help?** [Open an issue](https://github.com/yourusername/anime-picker/issues)
+**Need help?** [Open an issue](https://github.com/Saurabhvora/Anime_Picker_Recommendation_System/issues)
 
 **Happy searching! 🎭**

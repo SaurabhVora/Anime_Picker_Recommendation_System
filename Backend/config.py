@@ -8,7 +8,7 @@ class Config:
     """Application configuration"""
     
     # Model Settings
-    MODEL_NAME = 'all-MiniLM-L6-v2'  # Lightweight model (80 MB, works on 1 GB RAM)
+    MODEL_NAME = 'sentence-transformers/all-mpnet-base-v2'  # Better accuracy model (420 MB, ~63 MTEB score)
     EMBEDDINGS_FILE = 'anime_embeddings.pkl'
     
     # Search Settings

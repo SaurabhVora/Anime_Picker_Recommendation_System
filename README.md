@@ -129,7 +129,7 @@ The easiest way to run the entire application:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/yourusername/anime-picker.git
+git clone https://github.com/Saurabhvora/Anime_Picker_Recommendation_System.git
 cd anime-picker
 
 # 2. Start everything with one command
@@ -161,7 +161,7 @@ If you prefer to run services locally without Docker:
 #### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/anime-picker.git
+git clone https://github.com/Saurabhvora/Anime_Picker_Recommendation_System.git
 cd anime-picker
 ```
 
@@ -403,7 +403,7 @@ Run the entire application with a single command using Docker Compose:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/anime-picker.git
+git clone https://github.com/Saurabhvora/Anime_Picker_Recommendation_System.git
 cd anime-picker
 
 # Start both frontend and backend
@@ -577,8 +577,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ### Contact
 
-- **Issues:** [GitHub Issues](https://github.com/yourusername/anime-picker/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/yourusername/anime-picker/discussions)
+- **Issues:** [GitHub Issues](https://github.com/Saurabhvora/Anime_Picker_Recommendation_System/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/Saurabhvora/Anime_Picker_Recommendation_System/discussions)
 
 ---
 
