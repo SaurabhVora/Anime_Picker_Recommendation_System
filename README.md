@@ -226,7 +226,7 @@ Visit **http://localhost:3000** and start searching! 🎉
 │                         Backend                             │
 │  ┌─────────────────────────────────────────────────────┐   │
 │  │  Flask API + Sentence Transformers                   │   │
-│  │  • all-MiniLM-L6-v2 (80 MB model)                   │   │
+│  │  • all-mpnet-base-v2 (420 MB model)                 │   │
 │  │  • Cosine Similarity Search                          │   │
 │  │  • Smart Deduplication                               │   │
 │  │  • Pagination Support                                │   │
@@ -267,11 +267,13 @@ Visit **http://localhost:3000** and start searching! 🎉
 
 ### AI Model
 
-- **Model:** `all-MiniLM-L6-v2`
-- **Size:** 80 MB (5x smaller than base model)
-- **Dimensions:** 384
-- **Quality:** 95% of base model performance
-- **Speed:** 2x faster inference
+### AI Model
+
+- **Model:** `all-mpnet-base-v2`
+- **Size:** 420 MB
+- **Dimensions:** 768
+- **Quality:** State-of-the-art for semantic search (63.3 MTEB score)
+- **Speed:** Optimized for CPU inference
 
 ---
 
@@ -280,8 +282,8 @@ Visit **http://localhost:3000** and start searching! 🎉
 - **Source:** MyAnimeList
 - **Total Anime:** 3,424 entries
 - **Fields:** Title, Synopsis, Genres, Image URL
-- **Embeddings:** Pre-computed 384-dimensional vectors
-- **File Size:** 9.21 MB (embeddings.pkl)
+- **Embeddings:** Pre-computed 768-dimensional vectors
+- **File Size:** ~20 MB (embeddings.pkl)
 
 ---
 
