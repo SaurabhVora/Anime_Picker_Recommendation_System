@@ -2,6 +2,10 @@
 Configuration settings for Anime Picker System
 """
 import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 
 class Config:
@@ -9,7 +13,8 @@ class Config:
     
     # Model Settings
     MODEL_NAME = 'sentence-transformers/all-mpnet-base-v2'  # Better accuracy model (420 MB, ~63 MTEB score)
-    EMBEDDINGS_FILE = 'anime_embeddings.pkl'
+    METADATA_FILE = 'anime_metadata.csv'
+    EMBEDDINGS_FILE = 'anime_embeddings.npy'
     
     # Search Settings
     MAX_RESULTS = 5
@@ -18,7 +23,7 @@ class Config:
     
     # Server Settings
     PORT = int(os.getenv('PORT', 5000))
-    DEBUG = os.getenv('DEBUG', 'True') == 'True'
+    DEBUG = os.getenv('DEBUG', 'False') == 'True'
     HOST = os.getenv('HOST', '0.0.0.0')  # Changed for production deployment
     
     # Cache Settings

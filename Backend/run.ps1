@@ -1,4 +1,4 @@
-# Anime Picker System - Run Script
+﻿# Anime Picker System - Run Script
 # This script automatically activates the venv and runs the application
 
 Write-Host "=" -NoNewline -ForegroundColor Cyan

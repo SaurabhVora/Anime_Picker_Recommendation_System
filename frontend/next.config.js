@@ -11,6 +11,7 @@ const nextConfig = {
   },
   // Enable standalone output for Docker
   output: 'standalone',
+  reactCompiler: true,
 };
 
 module.exports = nextConfig;

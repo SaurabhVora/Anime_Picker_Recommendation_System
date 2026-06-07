@@ -4,7 +4,7 @@ This script processes the anime dataset and creates embeddings for semantic sear
 """
 import pandas as pd
 from sentence_transformers import SentenceTransformer
-import pickle
+import numpy as np
 import logging
 import sys
 from config import Config
@@ -87,21 +87,26 @@ def generate_embeddings(df, model_name=None):
         return None
 
 
-def save_embeddings(df, embeddings, output_file=None):
-    """Save dataframe and embeddings to pickle file"""
-    if output_file is None:
-        output_file = Config.EMBEDDINGS_FILE
+def save_embeddings(df, embeddings, metadata_file=None, embeddings_file=None):
+    """Save dataframe and embeddings to CSV and NumPy files"""
+    if metadata_file is None:
+        metadata_file = Config.METADATA_FILE
+    if embeddings_file is None:
+        embeddings_file = Config.EMBEDDINGS_FILE
     
-    logger.info(f"Saving embeddings to: {output_file}")
+    logger.info(f"Saving metadata to: {metadata_file}")
+    logger.info(f"Saving embeddings to: {embeddings_file}")
     
     try:
-        with open(output_file, 'wb') as f:
-            pickle.dump((df, embeddings), f)
+        df.to_csv(metadata_file, index=False)
+        np.save(embeddings_file, embeddings, allow_pickle=False)
         
-        # Get file size
+        # Get file sizes
         import os
-        file_size = os.path.getsize(output_file) / (1024 * 1024)  # MB
-        logger.info(f"Saved successfully! File size: {file_size:.2f} MB")
+        metadata_size = os.path.getsize(metadata_file) / (1024 * 1024)  # MB
+        embeddings_size = os.path.getsize(embeddings_file) / (1024 * 1024)  # MB
+        logger.info(f"Saved metadata successfully! File size: {metadata_size:.2f} MB")
+        logger.info(f"Saved embeddings successfully! File size: {embeddings_size:.2f} MB")
         return True
         
     except Exception as e:
@@ -109,16 +114,18 @@ def save_embeddings(df, embeddings, output_file=None):
         return False
 
 
-def verify_embeddings(output_file=None):
-    """Verify the saved embeddings can be loaded"""
-    if output_file is None:
-        output_file = Config.EMBEDDINGS_FILE
+def verify_embeddings(metadata_file=None, embeddings_file=None):
+    """Verify the saved CSV and NumPy embeddings can be loaded"""
+    if metadata_file is None:
+        metadata_file = Config.METADATA_FILE
+    if embeddings_file is None:
+        embeddings_file = Config.EMBEDDINGS_FILE
     
     logger.info("Verifying saved embeddings...")
     
     try:
-        with open(output_file, 'rb') as f:
-            df_loaded, embeddings_loaded = pickle.load(f)
+        df_loaded = pd.read_csv(metadata_file)
+        embeddings_loaded = np.load(embeddings_file, allow_pickle=False)
         
         logger.info(f"✅ Verification successful!")
         logger.info(f"   - Loaded {len(df_loaded)} anime entries")

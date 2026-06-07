@@ -4,9 +4,9 @@
 
 ### _Discover Your Next Anime Obsession with AI_
 
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
-[![Flask](https://img.shields.io/badge/Flask-3.0-000000?style=for-the-badge&logo=flask)](https://flask.palletsprojects.com/)
+[![Flask](https://img.shields.io/badge/Flask-3.1-000000?style=for-the-badge&logo=flask)](https://flask.palletsprojects.com/)
 [![Python](https://img.shields.io/badge/Python-3.13-3776AB?style=for-the-badge&logo=python)](https://www.python.org/)
 
 **An AI-powered anime recommendation system that understands natural language.**
@@ -213,7 +213,7 @@ Visit **http://localhost:3000** and start searching! 🎉
 ┌─────────────────────────────────────────────────────────────┐
 │                         Frontend                            │
 │  ┌─────────────────────────────────────────────────────┐   │
-│  │  Next.js 15 + React 19 + Vanilla CSS                │   │
+│  │  Next.js 16 + React 19 + Vanilla CSS                │   │
 │  │  • Glassmorphism UI                                  │   │
 │  │  • Debounced Search                                  │   │
 │  │  • Responsive Grid                                   │   │
@@ -236,9 +236,10 @@ Visit **http://localhost:3000** and start searching! 🎉
                          ▼
               ┌──────────────────────┐
               │   Data Layer         │
-              │  • anime_clean.csv   │
+              │  • anime_metadata.csv│
               │    (3,424 entries)   │
-              │  • Embeddings (768D) │
+              │  • anime_embeddings.npy  │
+              │    (768D, Safe NumPy)│
               └──────────────────────┘
 ```
 
@@ -251,21 +252,19 @@ Visit **http://localhost:3000** and start searching! 🎉
 | Technology                | Purpose           | Version |
 | ------------------------- | ----------------- | ------- |
 | **Python**                | Runtime           | 3.13.2  |
-| **Flask**                 | Web Framework     | 3.0.3   |
-| **Sentence Transformers** | AI Model          | 3.3.1   |
-| **scikit-learn**          | Similarity Search | 1.6.0   |
-| **Pandas**                | Data Processing   | 2.2.3   |
+| **Flask**                 | Web Framework     | 3.1.3   |
+| **Sentence Transformers** | AI Model          | 5.1.2   |
+| **scikit-learn**          | Similarity Search | 1.7.2   |
+| **Pandas**                | Data Processing   | 2.3.3   |
 
 ### Frontend
 
 | Technology       | Purpose         | Version |
 | ---------------- | --------------- | ------- |
-| **Next.js**      | React Framework | 15.0.3  |
-| **React**        | UI Library      | 19.0.0  |
+| **Next.js**      | React Framework | 16.2.7  |
+| **React**        | UI Library      | 19.2.0  |
 | **Vanilla CSS**  | Styling         | -       |
 | **Lucide React** | Icons           | Latest  |
-
-### AI Model
 
 ### AI Model
 
@@ -282,8 +281,8 @@ Visit **http://localhost:3000** and start searching! 🎉
 - **Source:** MyAnimeList
 - **Total Anime:** 3,424 entries
 - **Fields:** Title, Synopsis, Genres, Image URL
-- **Embeddings:** Pre-computed 768-dimensional vectors
-- **File Size:** ~20 MB (embeddings.pkl)
+- **Embeddings:** Pre-computed 768-dimensional vectors (saved as safe NumPy `.npy` format)
+- **File Size:** ~14.9 MB (anime_embeddings.npy) + ~4.4 MB (anime_metadata.csv)
 
 ---
 
@@ -317,9 +316,11 @@ anime-picker/
 │   ├── app.py                    # Flask API server
 │   ├── config.py                 # Configuration
 │   ├── preprocess.py             # Embedding generator
+│   ├── check_requirements.py     # Local dependency checker
 │   ├── requirements.txt          # Python dependencies
-│   ├── anime_clean.csv           # Dataset (3,424 anime)
-│   ├── anime_embeddings.pkl      # Pre-computed embeddings
+│   ├── anime_clean.csv           # Raw MAL dataset (3,424 anime)
+│   ├── anime_metadata.csv        # Preprocessed metadata CSV
+│   ├── anime_embeddings.npy      # Safe embeddings array (NumPy)
 │   └── README.md                 # Backend docs
 │
 ├── frontend/
@@ -329,8 +330,8 @@ anime-picker/
 │   │       ├── page.js           # Main search page
 │   │       ├── page.module.css   # Component styles
 │   │       └── globals.css       # Global styles
-│   ├── next.config.js            # Next.js config
-│   ├── package.json              # Node dependencies
+│   ├── next.config.js            # Next.js config (consolidated)
+│   ├── package.json              # Node dependencies (Next.js 16.2.7)
 │   └── README.md                 # Frontend docs
 │
 └── README.md                     # This file

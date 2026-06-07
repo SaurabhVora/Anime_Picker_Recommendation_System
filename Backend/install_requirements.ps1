@@ -1,4 +1,4 @@
-# Anime Picker System - Install Requirements Script
+﻿# Anime Picker System - Install Requirements Script
 # This script installs all required packages in the virtual environment
 
 Write-Host "=" -NoNewline -ForegroundColor Cyan

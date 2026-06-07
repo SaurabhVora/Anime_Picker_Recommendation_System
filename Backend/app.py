@@ -2,11 +2,12 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
-import pickle
+import pandas as pd
 import numpy as np
 import logging
 import sys
 import re
+import os
 from config import Config
 
 # ============================================
@@ -26,7 +27,8 @@ logger = logging.getLogger(__name__)
 # FLASK APP INITIALIZATION
 # ============================================
 app = Flask(__name__)
-CORS(app)
+allowed_origins = os.getenv('ALLOWED_ORIGINS', 'http://localhost:3000').split(',')
+CORS(app, resources={r"/*": {"origins": allowed_origins}})
 
 # ============================================
 # GLOBAL VARIABLES
@@ -52,9 +54,11 @@ def load_resources():
         logger.info("Model loaded successfully")
         
         # Load pre-computed embeddings
+        logger.info(f"Loading metadata from: {Config.METADATA_FILE}")
+        df = pd.read_csv(Config.METADATA_FILE)
+        
         logger.info(f"Loading embeddings from: {Config.EMBEDDINGS_FILE}")
-        with open(Config.EMBEDDINGS_FILE, 'rb') as f:
-            df, embeddings = pickle.load(f)
+        embeddings = np.load(Config.EMBEDDINGS_FILE, allow_pickle=False)
         
         logger.info(f"Loaded {len(df)} anime entries")
         logger.info(f"Embeddings shape: {embeddings.shape}")
@@ -64,7 +68,7 @@ def load_resources():
         
     except FileNotFoundError as e:
         logger.error(f"File not found: {e}")
-        logger.error(f"Please ensure {Config.EMBEDDINGS_FILE} exists in the current directory")
+        logger.error(f"Please ensure metadata and embeddings files exist in the current directory")
         return False
         
     except Exception as e:
